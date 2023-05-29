@@ -5,4 +5,4 @@ A simple implementation of grade-school classic “rock paper scissors”.
 
 #### Self-reflection
 
-*TBD*
+The C fundamentals from the CS50x course that I learned before helped me a lot. This was pretty easy!
