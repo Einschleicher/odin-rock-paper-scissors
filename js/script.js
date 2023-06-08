@@ -46,6 +46,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Old function to play 5 rounds, not in use in the current version
 function playGame() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Pick rock, paper or scissors");
@@ -68,6 +69,56 @@ function playGame() {
     }
 }
 
+// Check if player or computer has 5 points, then print a winner and disable buttons
+function checkWinner() {
+    if (userScore === 5) {
+        finish.textContent = "You won the game! Congratulations! Press F5 to play again.";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+    }
+    else if (computerScore === 5) {
+        finish.textContent = "You lost the game! Better luck next time! Press F5 to play again.";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+    }
+}
+
+// Initialize scores
 let userScore = 0;
 let computerScore = 0;
-playGame();
+
+// Initialize buttons
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+
+// Initialize text field "round result"
+const result = document.querySelector("#result");
+
+// Initialize text fields scores
+const userScoreElement = document.querySelector("#player_score");
+const computerScoreElement = document.querySelector("#computer_score");
+
+// Add event listeners for button clicking
+rock.addEventListener('click', function() {
+    result.textContent = playRound('rock', getComputerChoice());
+    userScoreElement.textContent = `Player: ${userScore}`;
+    computerScoreElement.textContent = `Computer: ${computerScore}`;
+    checkWinner();
+});
+
+paper.addEventListener('click', function() {
+    result.textContent = playRound('paper', getComputerChoice());
+    userScoreElement.textContent = `Player: ${userScore}`;
+    computerScoreElement.textContent = `Computer: ${computerScore}`;
+    checkWinner();
+});
+
+scissors.addEventListener('click', function() {
+    result.textContent = playRound('scissors', getComputerChoice());
+    userScoreElement.textContent = `Player: ${userScore}`;
+    computerScoreElement.textContent = `Computer: ${computerScore}`;
+    checkWinner();
+});
